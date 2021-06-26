@@ -1,9 +1,10 @@
 package it.polito.tdp.PremierLeague.model;
 
 public class Adiacenza {
-	 Player p1;
-	 Player p2;
-	 double peso;
+
+	Player p1;
+	Player p2;
+	double peso;
 	public Adiacenza(Player p1, Player p2, double peso) {
 		super();
 		this.p1 = p1;
@@ -28,10 +29,8 @@ public class Adiacenza {
 	public void setPeso(double peso) {
 		this.peso = peso;
 	}
-	@Override
-	public String toString() {
-		return "Adiacenza [p1=" + p1 + ", p2=" + p2 + ", peso=" + peso + "]";
-	}
-	 
+	
+	
+	
+	
 }
-

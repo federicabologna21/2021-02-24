@@ -1,4 +1,3 @@
-
 /**
  * Sample Skeleton for 'Scene.fxml' Controller Class
  */
@@ -47,34 +46,39 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
-    	Match m = cmbMatch.getValue();
-    	if(m==null) {
-    		txtResult.appendText("Seleziona un match!");
-    		return; 
+    	
+    	Match m = this.cmbMatch.getValue();
+    	if(m == null) {
+    		txtResult.appendText("Selezionare un match per creare il grafo!\n");
+    		return ;
     	}
     	
     	this.model.creaGrafo(m);
-    	
     	txtResult.appendText("GRAFO CREATO!\n");
-    	txtResult.appendText("# VERTICI: "+this.model.nVertici()+"\n");
-    	txtResult.appendText("# ARCHI: "+this.model.nArchi());
+    	txtResult.appendText("# VERTICI: "+this.model.getNumVertici()+"\n");
+    	txtResult.appendText("# ARCHI: "+this.model.getNumArchi()+"\n");
     	
     }
 
     @FXML
     void doGiocatoreMigliore(ActionEvent event) {    	
+    	
     	txtResult.clear();
-    	if(this.model.getGrafo() == null) {
-    		txtResult.appendText("Creare prima il grafo");
-    		return;
+    	Match m = this.cmbMatch.getValue();
+    	if(m == null) {
+    		txtResult.appendText("Selezionare un match per creare il grafo!\n");
+    		return ;
     	}
-    	txtResult.appendText("GIOCATORE MIGLIORE:\n "+this.model.getMigliore());
+    	
+    	this.model.creaGrafo(m);
+    	
+    	txtResult.appendText("Giocatore migliore:\n"+this.model.getBestPlayer()+"\n");
+    	
     }
     
     @FXML
     void doSimula(ActionEvent event) {
 
-    	
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -90,6 +94,7 @@ public class FXMLController {
     
     public void setModel(Model model) {
     	this.model = model;
-    	this.cmbMatch.getItems().addAll(model.listAllMatches());
+    	
+    	this.cmbMatch.getItems().addAll(this.model.listAllMatches());
     }
 }
